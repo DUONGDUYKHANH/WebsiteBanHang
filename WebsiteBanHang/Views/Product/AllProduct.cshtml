@@ -1,0 +1,83 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<WebsiteBanHang.Context.Product_2119110319>
+<style>
+    .pagination {
+        display: inline-block;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .pagination li {
+            float: left;
+        }
+
+        .pagination .active {
+            background-color: #AAA8A7;
+            border-radius: 5px;
+        }
+</style>
+<div class="container">
+
+
+
+    <header class="mb-3">
+        <div class="form-inline">
+            <strong class="mr-md-auto">32 Sản phẩm </strong>
+
+            <div class="btn-group">
+                <a href="page-listing-grid.html" class="btn btn-light active" data-toggle="tooltip" title="" data-original-title="List view">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <a href="page-listing-large.html" class="btn btn-light" data-toggle="tooltip" title="" data-original-title="Grid view">
+                    <i class="fa fa-th"></i>
+                </a>
+            </div>
+        </div>
+    </header><!-- sect-heading -->
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <span class="badge badge-danger"> NEW </span>
+                        <a href="@Url.Action("Detail", "Product",new { @Id = item.Id })" class="img-wrap">
+                            <span class="badge badge-danger"> NEW </span>
+                            <img src="~/Content/images/items/@item.Avatar">
+                        </a>
+                    </div>
+                    <figcaption class="info-wrap">
+                        @Html.ActionLink(item.Name, "Detail", "Product", new { @Id = item.Id }, null)
+                        <div class="price-wrap">
+                            <span class="price">@item.PriceDiscount</span>
+                            <small class="text-muted">VNĐ</small>
+                        </div>
+
+
+
+                        <hr>
+
+
+
+
+                    </figcaption>
+                </figure>
+            </div>
+        }
+
+    </div> <!-- row end.// -->
+
+
+
+    @Html.PagedListPager(Model, page => Url.Action("AllProduct", new { page, currentFilter = ViewBag.CurrentFilter }))
+
+
+
+</div>

@@ -1,0 +1,55 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<WebsiteBanHang.Context.Product_2119110319>
+<httpRuntime requestValidationMode="2.0" />
+<style>
+    .pagination {
+        display: inline-block;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .pagination li {
+            float: left;
+        }
+
+        .pagination .active {
+            background-color: #AAA8A7;
+            border-radius: 5px;
+        }
+</style>
+<div class="container">
+
+    <br>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <span class="badge badge-danger"> NEW </span>
+                        <a href="@Url.Action("Detail","Product",new { Id=item.Id})" class="img-wrap"> <img src="~/Content/images/items/@item.Avatar"> </a>
+                    </div> <!-- img-wrap.// -->
+                    <figcaption class="info-wrap">
+                        <a href="@Url.Action("Detail","Product",new { Id=item.Id})" class="title mb-2">@item.Name</a>
+                        <div class="price-wrap">
+                            <span class="price">@Convert.ToDecimal(item.Price).ToString("#,##") VNĐ </span>
+                            <small class="text-muted">/1 sản phẩm</small>
+                        </div> <!-- price-wrap.// -->
+
+                        <a href="@Url.Action("Detail","Product",new { id=item.Id})" class="btn btn-outline-primary"> Chi tiết sản phẩm </a>
+
+                    </figcaption>
+                </figure>
+            </div> <!-- col.// -->
+        }
+
+    </div> <!-- row.// -->
+    @Html.PagedListPager(Model, page => Url.Action("Search", new { page, currentFilter = ViewBag.CurrentFilter }))
+</div>
