@@ -9,6 +9,6 @@
 
 ### - Backend:
 
--  Core: ASP.NET
+-  Core: ASP.NET MVC
 -  View engine: EJS
 -  Database: SQL Server
