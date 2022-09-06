@@ -1,4 +1,4 @@
-# Shoes Store Webapp
+# Electronice device Store Webapp
 
 ## Tech used:
 
