@@ -10,5 +10,5 @@
 ### - Backend:
 
 -  Core: ASP.NET MVC
--  View engine: EJS
+-  View engine: Visual studio 2022
 -  Database: SQL Server
